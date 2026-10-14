@@ -1,0 +1,38 @@
+﻿<Window x:Class="mod6_2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Система учета задач (Модуль 6, Задание 2)" Height="500" Width="850">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="280"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="dgTasks" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" 
+                  Margin="0,0,10,0" SelectionChanged="DgTasks_SelectionChanged" RowHeight="28" FontSize="13">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название задачи" Binding="{Binding Title}" Width="160"/>
+                <DataGridTextColumn Header="Описание" Binding="{Binding Description}" Width="*"/>
+                <DataGridTextColumn Header="Статус" Binding="{Binding Status}" Width="120"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="Название задачи:" FontWeight="Bold" Margin="0,0,0,3"/>
+            <TextBox x:Name="txtTitle" Height="25" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Описание:" FontWeight="Bold" Margin="0,0,0,3"/>
+            <TextBox x:Name="txtDescription" Height="70" AcceptsReturn="True" TextWrapping="Wrap" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Статус:" FontWeight="Bold" Margin="0,0,0,3"/>
+            <ComboBox x:Name="cbStatus" Height="25" Margin="0,0,0,15">
+                <ComboBoxItem Content="К выполнению" IsSelected="True"/>
+                <ComboBoxItem Content="В процессе"/>
+                <ComboBoxItem Content="Выполнено"/>
+            </ComboBox>
+
+            <Button Content="Добавить задачу" Height="30" Margin="0,0,0,8" Click="BtnAdd_Click"/>
+            <Button Content="Обновить" Height="30" Margin="0,0,0,8" Click="BtnUpdate_Click"/>
+            <Button Content="Удалить" Height="30" Background="#FFF5C6C6" Click="BtnDelete_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

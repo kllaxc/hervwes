@@ -1,0 +1,44 @@
+﻿<Window x:Class="mod6_4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Учет финансов (Модуль 6, Задание 4)" Height="520" Width="850">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="280"/>
+        </Grid.ColumnDefinitions>
+
+        <DockPanel Margin="0,0,10,0">
+            <TextBlock x:Name="lblBalance" DockPanel.Dock="Bottom" Text="Итоговый баланс: 0 руб." FontSize="14" FontWeight="Bold" Margin="0,10,0,0"/>
+            <DataGrid x:Name="dgFinance" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" RowHeight="28" FontSize="13">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Тип" Binding="{Binding Type}" Width="90"/>
+                    <DataGridTextColumn Header="Категория" Binding="{Binding Category}" Width="130"/>
+                    <DataGridTextColumn Header="Сумма (руб.)" Binding="{Binding Amount}" Width="100"/>
+                    <DataGridTextColumn Header="Описание" Binding="{Binding Description}" Width="*"/>
+                    <DataGridTextColumn Header="Дата" Binding="{Binding Date}" Width="90"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
+
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="Тип операции:" FontWeight="Bold" Margin="0,0,0,3"/>
+            <ComboBox x:Name="cbType" Height="25" Margin="0,0,0,10">
+                <ComboBoxItem Content="Доход" IsSelected="True"/>
+                <ComboBoxItem Content="Расход"/>
+            </ComboBox>
+
+            <TextBlock Text="Категория:" FontWeight="Bold" Margin="0,0,0,3"/>
+            <TextBox x:Name="txtCategory" Height="25" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Сумма (руб.):" FontWeight="Bold" Margin="0,0,0,3"/>
+            <TextBox x:Name="txtAmount" Height="25" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Описание:" FontWeight="Bold" Margin="0,0,0,3"/>
+            <TextBox x:Name="txtDescription" Height="60" AcceptsReturn="True" TextWrapping="Wrap" Margin="0,0,0,15"/>
+
+            <Button Content="Добавить запись" Height="30" Margin="0,0,0,8" Click="BtnAdd_Click"/>
+            <Button Content="Удалить выбранное" Height="30" Background="#FFF5C6C6" Click="BtnDelete_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
