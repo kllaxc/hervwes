@@ -1,0 +1,40 @@
+﻿<Window x:Class="mod_7.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ГОСТ 28147-89 — Демонстрационный модуль (WPF)" Height="450" Width="700">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Открытый текст / Расшифрованный текст:" FontWeight="Bold"/>
+        <TextBox x:Name="TxtPlaintext" Grid.Row="1" AcceptsReturn="True" TextWrapping="Wrap" Margin="0,0,0,10"/>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,10">
+            <Label Content="Ключ (HEX):" VerticalAlignment="Center"/>
+            <TextBox x:Name="TxtKey" Width="350" Margin="10,0,20,0" VerticalAlignment="Center"
+                     Text="E16FA0948830A39C240742C2DE8592A410633C14EC10D11C32D2930210203088"/>
+
+            <Label Content="Режим:" VerticalAlignment="Center"/>
+            <ComboBox x:Name="CbMode" Width="80" Margin="10,0,0,0" VerticalAlignment="Center" SelectionChanged="CbMode_SelectionChanged">
+                <ComboBoxItem Content="ECB" IsSelected="True"/>
+                <ComboBoxItem Content="CBC"/>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,0,0,10">
+            <Label Content="Шифротекст (HEX):" FontWeight="Bold" VerticalAlignment="Center"/>
+            <TextBox x:Name="TxtCiphertext" Width="520" Margin="10,0,0,0" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="BtnEncrypt" Content="Зашифровать" Width="100" Height="30" Margin="5" Click="BtnEncrypt_Click"/>
+            <Button x:Name="BtnDecrypt" Content="Расшифровать" Width="100" Height="30" Margin="5" Click="BtnDecrypt_Click"/>
+            <Button x:Name="BtnSave" Content="Сохранить отчет" Width="110" Height="30" Margin="5" Click="BtnSave_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
